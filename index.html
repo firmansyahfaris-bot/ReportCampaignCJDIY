@@ -13,7 +13,6 @@
         .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         th { position: sticky; top: 0; z-index: 10; }
-        .group-header { position: sticky; top: 37px; z-index: 5; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -34,13 +33,43 @@
                 </div>
 
                 <div class="flex overflow-x-auto no-scrollbar lg:grid lg:grid-cols-10 gap-2 w-full lg:w-auto pb-1 lg:pb-0 snap-x snap-mandatory">
-                    <!-- Summary Cards -->
                     <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
                         <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Forecast</span>
                         <span class="text-xs md:text-sm font-bold text-rose-600">18.87%</span>
                     </div>
-                    <!-- ... (other stats simplified for space) ... -->
-                     <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Scan Msk</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">90.6k</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Hrs Antar</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">122.8k</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Tot Antar</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">95.7k</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Cap ANT</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">77.96%</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Sedang</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">29.8k</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">DLV</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">63.5k</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Prod AVG</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">42.5</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">NOB</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">27.3k</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
                         <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">%DLV</span>
                         <span class="text-xs md:text-sm font-bold text-rose-600">51.74%</span>
                     </div>
@@ -119,46 +148,48 @@
 
         window.onload = function() {
             const tbody = document.getElementById('table-body');
+            const cleanNum = (s) => parseFloat(String(s).replace(/[^0-9.-]+/g, ""));
             
-            // 1. Pre-calculate Min/Max for %DLV for the color scale
-            const dlvValues = dataRows.map(r => parseFloat(r[11].replace('%', ''))).filter(v => !isNaN(v));
+            // Stats for heatmap
+            const dlvValues = dataRows.map(r => cleanNum(r[11])).filter(v => !isNaN(v));
             const minDLV = Math.min(...dlvValues);
             const maxDLV = Math.max(...dlvValues);
+            const foreValues = dataRows.map(r => cleanNum(r[2])).filter(v => !isNaN(v));
+            const minFore = Math.min(...foreValues);
+            const maxFore = Math.max(...foreValues);
 
-            // Sort by District
             dataRows.sort((a,b) => a[0] - b[0]);
-
             let currentDist = null;
 
             dataRows.forEach(row => {
-                const distNum = row[0];
-                const dlvRaw = row[11];
-                const dlvVal = parseFloat(dlvRaw.replace('%', ''));
-
-                if(currentDist !== distNum) {
+                if(currentDist !== row[0]) {
+                    currentDist = row[0];
                     const trGroup = document.createElement('tr');
-                    trGroup.className = "bg-slate-200 border-y-2 border-slate-300 group-header shadow-sm";
-                    trGroup.innerHTML = `<td colspan="12" class="px-4 py-2 text-left font-bold text-slate-800 uppercase tracking-wider text-sm">District ${distNum}</td>`;
+                    trGroup.className = "bg-slate-200 border-y-2 border-slate-300 sticky top-[0px] z-10";
+                    trGroup.innerHTML = `<td colspan="12" class="px-4 py-2 text-left font-bold text-slate-800 uppercase tracking-wider text-sm">District ${currentDist}</td>`;
                     tbody.appendChild(trGroup);
-                    currentDist = distNum;
                 }
 
                 const tr = document.createElement('tr');
-                tr.className = "transition-colors duration-150 hover:bg-blue-50/50";
+                const dlvVal = cleanNum(row[11]);
+                const foreVal = cleanNum(row[2]);
                 
-                // Color scale logic: Green gradient based on %DLV
-                let bgColorStyle = "";
+                let dlveBgStyle = "";
                 if (!isNaN(dlvVal)) {
                     const ratio = (dlvVal - minDLV) / (maxDLV - minDLV);
-                    // Lightness: 95% (light green) to 40% (darker green)
-                    const lightness = 95 - (ratio * 55); 
-                    bgColorStyle = `style="background-color: hsla(120, 70%, ${lightness}%, 0.3)"`;
+                    dlveBgStyle = `style="background-color: hsla(120, 60%, ${95 - (ratio * 35)}%, 0.4)"`;
+                }
+
+                let foreBgStyle = "";
+                if (!isNaN(foreVal)) {
+                    const ratio = (foreVal - minFore) / (maxFore - minFore);
+                    foreBgStyle = `style="background-color: hsla(30, 80%, ${95 - (ratio * 35)}%, 0.5)"`;
                 }
 
                 tr.innerHTML = `
-                    <td class="px-4 py-2 text-left border-r border-slate-100">Dist. ${distNum}</td>
+                    <td class="px-4 py-2 text-left border-r border-slate-100">Dist. ${row[0]}</td>
                     <td class="px-4 py-2 text-left font-medium text-slate-800 border-r border-slate-100">${row[1]}</td>
-                    <td class="px-3 py-2 text-center text-slate-600 font-medium">${row[2]}</td>
+                    <td class="px-3 py-2 text-center text-slate-800 font-bold" ${foreBgStyle}>${row[2]}</td>
                     <td class="px-3 py-2 text-slate-600">${row[3]}</td>
                     <td class="px-3 py-2 text-slate-600">${row[4]}</td>
                     <td class="px-3 py-2 text-slate-600">${row[5]}</td>
@@ -167,7 +198,7 @@
                     <td class="px-3 py-2 text-slate-600">${row[8]}</td>
                     <td class="px-3 py-2 text-slate-600">${row[9]}</td>
                     <td class="px-3 py-2 text-center font-semibold text-rose-700 bg-rose-50">${row[10]}</td>
-                    <td class="px-3 py-2 text-center font-bold" ${bgColorStyle}>${row[11]}</td>
+                    <td class="px-3 py-2 text-center font-bold" ${dlveBgStyle}>${row[11]}</td>
                 `;
                 tbody.appendChild(tr);
             });
