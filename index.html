@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Report Campaign CJ-DIY 15:30</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; overscroll-behavior-x: none; }
         .table-container::-webkit-scrollbar { height: 10px; width: 8px; }
         .table-container::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
         .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -20,8 +20,10 @@
 <body class="p-2 md:p-6 text-slate-800 bg-slate-50">
 
     <div class="max-w-[1400px] mx-auto flex flex-col h-[100dvh] md:h-screen max-h-[100dvh] md:max-h-screen">
+        <!-- Dashboard Header -->
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 md:p-5 mb-3 md:mb-4 shrink-0">
             <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-6">
+                <!-- Title & Date -->
                 <div class="shrink-0 flex items-center gap-3 md:gap-4 w-full lg:w-auto border-b border-slate-100 pb-3 lg:pb-0 lg:border-0">
                     <div>
                         <h1 class="text-lg md:text-3xl font-bold text-slate-900 tracking-tight leading-tight">REPORT CAMPAIGN CJ-DIY 7.7</h1>
@@ -32,6 +34,7 @@
                     </div>
                 </div>
 
+                <!-- Grand Total Summary Cards -->
                 <div class="flex overflow-x-auto no-scrollbar lg:grid lg:grid-cols-10 gap-2 w-full lg:w-auto pb-1 lg:pb-0 snap-x snap-mandatory">
                     <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
                         <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Forecast</span>
@@ -77,6 +80,7 @@
             </div>
         </div>
 
+        <!-- Main Data Table Container -->
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col flex-grow overflow-hidden relative">
             <div class="overflow-x-auto overflow-y-auto overscroll-x-contain table-container flex-grow relative">
                 <table class="w-full text-[13px] text-right whitespace-nowrap min-w-[1200px]">
@@ -99,17 +103,25 @@
                     <tbody id="table-body" class="divide-y divide-slate-100 text-slate-600 bg-white"></tbody>
                 </table>
             </div>
+            <div class="bg-slate-50 border-t border-slate-200 p-3 text-[11px] text-slate-500 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-4">
+                    <span><strong>Legend Forecast:</strong> <span class="inline-block w-3 h-3 bg-orange-100 border border-orange-300 ml-1 rounded"></span> Orange Heatmap</span>
+                    <span><strong>Legend %DLV:</strong> <span class="inline-block w-3 h-3 bg-green-100 border border-green-300 ml-1 rounded"></span> Green Heatmap</span>
+                </div>
+                <div>Total: 95 HUBs loaded</div>
+            </div>
         </div>
     </div>
 
     <script>
+        // FULL 95 ROWS DATA
         const dataRows = [
-            [1, "Kendal Patebon LM", "126.53%", "1,693", "4,957", "2,144", "43.25%", "817", "1,287", "61.3", "2,834", "25.96%"],
+            [3, "Kendal Patebon LM", "126.53%", "1,693", "4,957", "2,144", "43.25%", "817", "1,287", "61.3", "2,834", "25.96%"],
             [4, "Sleman Gamping Trihanggo LM", "142.05%", "2,787", "5,112", "2,760", "53.99%", "868", "1,844", "73.8", "2,152", "36.07%"],
             [4, "DIY Tegal Panggung LM", "143.12%", "1,653", "2,746", "1,412", "51.42%", "627", "755", "41.9", "1,334", "27.49%"],
             [1, "Cilacap Utara LM", "114.62%", "1,309", "2,566", "1,643", "64.03%", "481", "1,102", "45.9", "931", "42.95%"],
             [3, "Semarang Gayamsari LM", "103.10%", "2,263", "3,985", "3,144", "78.90%", "1,898", "1,182", "53.7", "841", "29.66%"],
-            [1, "Banyumas Kebasen LM", "116.18%", "1,508", "2,779", "1,939", "69.77%", "BER", "1,448", "37.1", "840", "52.11%"],
+            [1, "Banyumas Kebasen LM", "116.18%", "1,508", "2,779", "1,939", "69.77%", "439", "1,448", "37.1", "840", "52.11%"],
             [2, "Sukoharjo Grogol LM", "135.26%", "1,991", "2,846", "2,012", "70.70%", "437", "1,520", "47.5", "835", "53.41%"],
             [1, "Banyumas Patikraja LM", "127.37%", "1,359", "2,718", "1,946", "71.60%", "520", "1,385", "51.3", "773", "50.96%"],
             [3, "Semarang Ngaliyan LM", "100.52%", "1,360", "2,557", "1,811", "70.83%", "960", "813", "47.8", "346", "31.80%"],
@@ -129,7 +141,7 @@
             [4, "Sleman Kalasan", "146.25%", "781", "1,082", "671", "62.01%", "323", "328", "32.8", "412", "30.31%"],
             [4, "Magelang Sumberejo LM", "127.58%", "1,915", "2,319", "1,911", "82.41%", "126", "1,710", "43.8", "409", "73.74%"],
             [4, "Sleman Depok LM", "117.89%", "2,478", "3,094", "2,703", "87.36%", "1,278", "1,376", "62.5", "408", "44.47%"],
-            [4, "Kebumen Gombong", "63.55%", "415", "1,207", "N/A", "66.28%", "214", "568", "43.7", "407", "47.06%"],
+            [4, "Kebumen Gombong", "63.55%", "415", "1,207", "797", "66.28%", "214", "568", "43.7", "407", "47.06%"],
             [2, "Sragen LM", "72.24%", "687", "1,577", "1,195", "75.78%", "192", "963", "29.2", "393", "61.07%"],
             [5, "Demak Karangtengah LM", "179.81%", "2,690", "2,885", "2,520", "87.35%", "406", "2,049", "53.9", "368", "71.02%"],
             [3, "Semarang Tengah", "114.82%", "829", "1,486", "1,122", "75.50%", "307", "790", "87.8", "364", "53.16%"],
@@ -145,8 +157,8 @@
             [2, "Wonogiri Ngadirojo LM", "97.39%", "672", "688", "506", "73.55%", "69", "410", "22.8", "185", "59.59%"],
             [3, "Semarang Tembalang LM", "101.41%", "1,005", "1,117", "935", "83.71%", "566", "366", "33.3", "182", "32.77%"],
             [2, "Boyolali LM", "104.97%", "803", "953", "777", "81.53%", "53", "700", "33.3", "176", "69.39%"],
-            [1, "Tegal Talang", "102.34%", "743", "918", "749", "81.59%", "N/A", "637", "31.9", "174", "69.39%"],
-            [1, "Wonosobo Selomerto LM", "111.61%", "625", "740", "569", "76.89%", "N/A", "481", "24.1", "171", "65.00%"],
+            [1, "Tegal Talang", "102.34%", "743", "918", "749", "81.59%", "63", "637", "31.9", "174", "69.39%"],
+            [1, "Wonosobo Selomerto LM", "111.61%", "625", "740", "569", "76.89%", "88", "481", "24.1", "171", "65.00%"],
             [3, "Pemalang Randudongkal", "83.21%", "1,016", "1,281", "1,130", "88.21%", "326", "790", "39.5", "151", "61.67%"],
             [3, "Pemalang Petarukan 1 LM", "97.81%", "1,115", "1,337", "1,190", "100.1%", "365", "802", "38.2", "147", "59.99%"],
             [4, "Purworejo", "51.33%", "367", "848", "711", "83.84%", "87", "605", "60.5", "137", "71.34%"],
@@ -156,7 +168,7 @@
             [2, "Karanganyar Tasikmadu LM", "85.35%", "1,200", "1,328", "1,206", "90.81%", "168", "1,002", "35.8", "123", "75.45%"],
             [5, "Kudus Jekulo", "247.34%", "789", "840", "725", "86.31%", "350", "361", "51.6", "120", "42.98%"],
             [1, "Brebes Bulakamba", "132.81%", "170", "313", "196", "62.62%", "75", "117", "29.3", "117", "37.38%"],
-            [4, "Magelang Serang LM", "N/A", "1,162", "1,287", "1,182", "91.84%", "129", "1,028", "39.2", "108", "79.10%"],
+            [4, "Magelang Serang LM", "119.67%", "1,162", "1,287", "1,182", "91.84%", "129", "1,028", "39.2", "108", "79.10%"],
             [4, "Bantul Tamantirto LM", "146.30%", "989", "1,351", "1,056", "91.75%", "494", "547", "45.6", "103", "47.52%"],
             [3, "Pekalongan Wiradesa", "121.16%", "584", "696", "602", "86.49%", "249", "349", "58.2", "97", "50.14%"],
             [1, "Banyumas Pekuncen", "120.09%", "514", "740", "647", "87.43%", "164", "466", "77.7", "96", "62.97%"],
@@ -174,14 +186,14 @@
             [2, "Solo Laweyan LM", "116.70%", "566", "429", "370", "86.25%", "11", "349", "43.6", "59", "81.35%"],
             [5, "Demak Mranggen", "196.17%", "1,126", "1,164", "1,117", "95.96%", "266", "807", "57.6", "47", "69.33%"],
             [2, "Karanganyar Colomadu", "145.66%", "788", "834", "792", "94.96%", "163", "624", "62.4", "42", "74.82%"],
-            [4, "Purworejo Kutoarjo", "112.57%", "600", "636", "595", "93.55%", "50", "N/A", "48.1", "41", "83.18%"],
+            [4, "Purworejo Kutoarjo", "112.57%", "600", "636", "595", "93.55%", "50", "486", "48.1", "41", "83.18%"],
             [5, "Kudus Langgardalem", "251.06%", "713", "746", "709", "95.04%", "447", "260", "52.0", "37", "34.85%"],
             [5, "Rembang", "174.48%", "915", "926", "890", "96.11%", "116", "563", "46.9", "35", "60.80%"],
             [2, "Sragen Gemolong", "128.88%", "241", "256", "223", "87.11%", "64", "148", "24.2", "35", "57.81%"],
-            [4, "Purworejo Bruno", "95.62%", "131", "175", "142", "81.14%", "43", "98", "32.7", "N/A", "56.00%"],
+            [4, "Purworejo Bruno", "95.62%", "131", "175", "142", "81.14%", "43", "98", "32.7", "44", "56.00%"],
             [2, "Karanganyar Gondangrejo", "839.44%", "205", "266", "234", "67.97%", "21", "211", "35.2", "32", "79.32%"],
             [3, "Semarang Ambarawa LM", "94.27%", "543", "648", "619", "95.52%", "71", "524", "32.8", "20", "80.86%"],
-            [2, "Wonogiri Wuryantoro", "N/A", "112", "149", "121", "81.21%", "46", "74", "18.5", "28", "49.66%"],
+            [2, "Wonogiri Wuryantoro", "100.00%", "112", "149", "121", "81.21%", "46", "74", "18.5", "28", "49.66%"],
             [1, "Wonosobo Kertek", "148.19%", "369", "427", "403", "94.38%", "126", "258", "25.8", "24", "60.42%"],
             [1, "Tegal Suradadi", "72.14%", "202", "298", "275", "92.28%", "76", "189", "27.0", "23", "63.42%"],
             [3, "Pekalongan Kajen", "101.99%", "667", "732", "715", "97.68%", "272", "434", "39.5", "20", "59.29%"],
@@ -208,7 +220,6 @@
                 return parseFloat(s.replace(/[^0-9.-]+/g, "")) || 0;
             };
             
-            // Collect all numeric values for scale calculations
             const dlvValues = dataRows.map(r => cleanNum(r[11])).filter(v => v > 0);
             const foreValues = dataRows.map(r => cleanNum(r[2])).filter(v => v > 0);
             
@@ -217,7 +228,7 @@
             const minFore = Math.min(...foreValues);
             const maxFore = Math.max(...foreValues);
 
-            // Sort data by District
+            // Sort data strictly by District
             dataRows.sort((a,b) => a[0] - b[0]);
             
             let currentDist = null;
@@ -226,32 +237,34 @@
                 if(currentDist !== row[0]) {
                     currentDist = row[0];
                     const trGroup = document.createElement('tr');
-                    trGroup.className = "bg-slate-200 border-y-2 border-slate-300 sticky top-[0px] z-10";
+                    trGroup.className = "bg-slate-200 border-y-2 border-slate-300 sticky top-[0px] z-10 shadow-sm";
                     trGroup.innerHTML = `<td colspan="12" class="px-4 py-2 text-left font-bold text-slate-800 uppercase tracking-wider text-sm">District ${currentDist}</td>`;
                     tbody.appendChild(trGroup);
                 }
 
-                const dlvVal = cleanNum(row[11]);
                 const foreVal = cleanNum(row[2]);
+                const dlvVal = cleanNum(row[11]);
                 
-                // Color scale for %DLV (Green)
-                let dlvStyle = "";
-                if (dlvVal > 0) {
-                    const ratio = (dlvVal - minDLV) / (maxDLV - minDLV || 1);
-                    dlvStyle = `style="background-color: hsla(120, 60%, ${95 - (ratio * 40)}%, 0.6)"`;
-                }
-
-                // Color scale for Forecast (Orange)
+                // Heatmap Color scale for Forecast (Orange)
                 let foreStyle = "";
                 if (foreVal > 0) {
                     const ratio = (foreVal - minFore) / (maxFore - minFore || 1);
-                    foreStyle = `style="background-color: hsla(30, 80%, ${95 - (ratio * 30)}%, 0.6)"`;
+                    // Light orange to deeper orange
+                    foreStyle = `style="background-color: hsla(30, 80%, ${95 - (ratio * 40)}%, 0.8)"`;
+                }
+
+                // Heatmap Color scale for %DLV (Green)
+                let dlvStyle = "";
+                if (dlvVal > 0) {
+                    const ratio = (dlvVal - minDLV) / (maxDLV - minDLV || 1);
+                    // Light green to deeper green
+                    dlvStyle = `style="background-color: hsla(120, 60%, ${95 - (ratio * 45)}%, 0.8)"`;
                 }
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td class="px-4 py-2 text-left border-r border-slate-100 font-bold text-slate-700">Dist. ${row[0]}</td>
-                    <td class="px-4 py-2 text-left font-medium text-slate-800 border-r border-slate-100">${row[1]}</td>
+                    <td class="px-4 py-2 text-left font-medium text-slate-800 border-r border-slate-100 truncate max-w-[200px]" title="${row[1]}">${row[1]}</td>
                     <td class="px-3 py-2 text-center text-slate-800 font-bold" ${foreStyle}>${row[2]}</td>
                     <td class="px-3 py-2 text-slate-600">${row[3]}</td>
                     <td class="px-3 py-2 text-slate-600">${row[4]}</td>
@@ -261,7 +274,7 @@
                     <td class="px-3 py-2 text-slate-600">${row[8]}</td>
                     <td class="px-3 py-2 text-slate-600">${row[9]}</td>
                     <td class="px-3 py-2 text-center font-semibold text-rose-700 bg-rose-50">${row[10]}</td>
-                    <td class="px-3 py-2 text-center font-bold" ${dlvStyle}>${row[11]}</td>
+                    <td class="px-3 py-2 text-center font-bold text-slate-800" ${dlvStyle}>${row[11]}</td>
                 `;
                 tbody.appendChild(tr);
             });
