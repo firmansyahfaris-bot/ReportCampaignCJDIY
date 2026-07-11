@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Campaign CJ-DIY 7.7 Grouped</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+        }
+        
+        /* Custom scrollbar for the table container */
+        .table-container::-webkit-scrollbar {
+            height: 10px;
+            width: 8px;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Sticky header */
+        th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* Sticky group header */
+        .group-header {
+            position: sticky;
+            top: 37px; /* Below the main header */
+            z-index: 5;
+        }
+
+        /* Hide scrollbar for KPI cards on mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="p-2 md:p-6 text-slate-800 bg-slate-50">
+
+    <div class="max-w-[1400px] mx-auto flex flex-col h-[100dvh] md:h-screen max-h-[100dvh] md:max-h-screen">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 md:p-5 mb-3 md:mb-4 shrink-0">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-6">
+                
+                <!-- Logo, Title & Date -->
+                <div class="shrink-0 flex items-center gap-3 md:gap-4 w-full lg:w-auto border-b border-slate-100 pb-3 lg:pb-0 lg:border-0">
+                    <div>
+                        <h1 class="text-lg md:text-3xl font-bold text-slate-900 tracking-tight leading-tight">REPORT CAMPAIGN CJ-DIY 7.7</h1>
+                        <div class="flex items-center mt-1 md:mt-2 text-slate-500 font-medium text-xs md:text-sm">
+                            <svg class="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span>11-Jul-26 at 12:10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grand Total Summary Cards (10 Metrics) -->
+                <div class="flex overflow-x-auto no-scrollbar lg:grid lg:grid-cols-10 gap-2 w-full lg:w-auto pb-1 lg:pb-0 snap-x snap-mandatory">
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">Forecast</span>
+                        <span class="text-xs md:text-sm font-bold text-rose-600">17.06%</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">Scan Masuk</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">89,261</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">Harus Antar</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">121,983</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">Total Antar</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">88,151</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">Capacity ANT</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">72.26%</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">Sedang Antar</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">61,176</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">DLV</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">25,914</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">Prod. AVG</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">14.2</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">NOB</span>
+                        <span class="text-xs md:text-sm font-bold text-slate-800">33,964</span>
+                    </div>
+                    <div class="bg-slate-50 rounded-lg p-2 border border-slate-100 flex flex-col items-center justify-center text-center min-w-[90px] snap-start shrink-0">
+                        <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 md:mb-1">%DLV</span>
+                        <span class="text-xs md:text-sm font-bold text-rose-600">21.24%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Data Table Container -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col flex-grow overflow-hidden relative">
+            
+            <div class="overflow-x-auto overflow-y-auto overscroll-x-contain table-container flex-grow relative">
+                <table class="w-full text-[13px] text-right whitespace-nowrap min-w-[1200px]">
+                    <!-- Table Header -->
+                    <thead class="bg-slate-800 text-slate-100 text-[11px] uppercase tracking-wider font-semibold shadow-sm">
+                        <tr>
+                            <th class="px-4 py-3 text-left border-b border-slate-900 bg-slate-800 w-48">District</th>
+                            <th class="px-4 py-3 text-left border-b border-slate-900 bg-slate-800 w-64">HUB Name</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-700 text-center" title="Forecast %">Forecast %</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-800">Scan Masuk</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-800">Harus Antar</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-800">Total Antar</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-800">Capacity ANT</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-800">Sedang Antar</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-800">DLV</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-slate-800" title="Productivity Average">Prod. AVG</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-rose-900/80 text-center">NOB</th>
+                            <th class="px-3 py-3 border-b border-slate-900 bg-rose-900/80 text-center">%DLV</th>
+                        </tr>
+                    </thead>
+                    
+                    <!-- Table Body (Populated via JS to ensure perfect grouping) -->
+                    <tbody id="table-body" class="divide-y divide-slate-100 text-slate-600 bg-white">
+                        <!-- Rows will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer / Legend -->
+            <div class="bg-slate-50 border-t border-slate-200 p-3 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 lg:gap-4 text-xs shrink-0">
+                <div class="flex flex-wrap items-center gap-2 md:gap-4 text-slate-600">
+                    <span class="font-semibold text-slate-800 w-full sm:w-auto">Forecast Status:</span>
+                    
+                    <div class="flex items-center gap-1.5">
+                        <span class="block w-3 h-3 rounded-sm bg-blue-100 border border-blue-300"></span>
+                        <span>Normal (<100%)</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-1.5">
+                        <span class="block w-3 h-3 rounded-sm bg-emerald-100 border border-emerald-300"></span>
+                        <span>Good (100%-120%)</span>
+                    </div>
+
+                    <div class="flex items-center gap-1.5">
+                        <span class="block w-3 h-3 rounded-sm bg-orange-100 border border-orange-300"></span>
+                        <span>High (120%-150%)</span>
+                    </div>
+
+                    <div class="flex items-center gap-1.5">
+                        <span class="block w-3 h-3 rounded-sm bg-rose-100 border border-rose-400"></span>
+                        <span class="font-medium text-rose-700">Critical (>150%)</span>
+                    </div>
+                </div>
+                <div class="text-slate-400 italic">
+                    Grouped by District - 93 records rendered
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Full dataset parsed from the prompt text, grouped by District implicitly by insertion order
+        const dataRows = [
+            // --- DISTRICT 1 ---
+            [1, "Banyumas Kebasen LM", "116.18%", "1,508", "2,780", "1,757", "63.20%", "1,192", "543", "12.9", "1,023", "19.53%"],
+            [1, "Cilacap Utara LM", "114.62%", "1,309", "2,574", "1,621", "62.98%", "1,035", "552", "21.2", "953", "21.45%"],
+            [1, "Banyumas Patikkraja LM", "127.37%", "1,359", "2,720", "1,941", "71.36%", "1,224", "705", "20.1", "729", "25.92%"],
+            [1, "Purbalingga kembaran Kulon LM", "98.49%", "1,108", "1,930", "1,186", "61.45%", "597", "570", "23.8", "744", "29.53%"],
+            [1, "Purbalingga Karanganyar", "91.21%", "602", "1,262", "723", "57.29%", "405", "298", "22.9", "541", "23.61%"],
+            [1, "Brebes Kersana", "141.77%", "706", "1,195", "770", "64.44%", "629", "137", "6.2", "426", "11.46%"],
+            [1, "Tegal Talang", "102.34%", "743", "926", "746", "80.56%", "455", "275", "13.8", "180", "29.70%"],
+            [1, "Wonosobo Selomerto LM", "111.61%", "625", "740", "568", "76.76%", "218", "EEE", "13.3", "172", "45.00%"],
+            [1, "Brebes Kaliwadas", "113.20%", "669", "811", "677", "83.48%", "357", "310", "17.2", "134", "38.22%"],
+            [1, "Brebes Bulakamba.", "132.81%", "170", "313", "193", "61.56%", "143", "46", "11.5", "120", "14.70%"],
+            [1, "Tegal Slawi LM", "106.58%", "875", "1,071", "956", "89.26%", "579", "346", "20.4", "119", "32.31%"],
+            [1, "Banyumas Pekuncen", "120.09%", "514", "740", "643", "86.89%", "362", "267", "24.3", "100", "36.08%"],
+            [1, "Tegal Sudibyo LM", "98.45%", "1,015", "1,285", "1,092", "92.15%", "835", "239", "11.4", "97", "20.17%"],
+            [1, "Tegal Balapulang", "108.42%", "592", "731", "653", "89.06%", "541", "95", "7.9", "88", "13.00%"],
+            [1, "Wonosobo Mojotengah", "120.92%", "237", "286", "206", "72.03%", "77", "125", "17.9", "80", "43.71%"],
+            [1, "Banjarnegara Madukara", "127.14%", "1,218", "1,031", "958", "92.92%", "482", "454", "18.2", "73", "44.03%"],
+            [1, "Wonosobo Kertek", "148.19%", "369", "427", "402", "94.15%", "316", "80", "8.0", "25", "18.74%"],
+            [1, "Brebes Wanasari", "136.39%", "401", "531", "518", "97.55%", "239", "251", "17.9", "20", "47.22%"],
+            [1, "Brebes Salem", "136.51%", "86", "124", "107", "86.29%", "105", "1", "0.2", "17", "0.81%"],
+            [1, "Brebes Larangan", "126.41%", "359", "389", "376", "96.66%", "141", "224", "18.7", "16", "57.58%"],
+            [1, "Cilacap Karangpucung Raya LM", "111.56%", "820", "1,012", "1,014", "100.20%", "620", "367", "19.3", "9", "36.26%"],
+            [1, "Banjarnegara Klampok", "158.50%", "569", "456", "453", "99.34%", "181", "267", "26.7", "3", "58.55%"],
+            [1, "Banjarnegara Karangkobar", "88.22%", "307", "291", "295", "101.37%", "140", "146", "12.2", "1", "50.17%"],
+
+            // --- DISTRICT 2 ---
+            [2, "Sukoharjo Grogol LM", "135.26%", "1,991", "2,868", "2,001", "69.77%", "1,229", "752", "21.5", "867", "26.22%"],
+            [2, "Solo Banjarsari LM", "129.19%", "1,018", "1,703", "1,031", "60.54%", "862", "169", "9.9", "673", "9.92%"],
+            [2, "Sragen LM", "72.03%", "685", "1,593", "1,190", "74.70%", "671", "493", "12.0", "414", "30.95%"],
+            [2, "Klaten Tengah LM", "106.69%", "1,755", "2,051", "1,791", "87.32%", "768", "999", "29.4", "260", "48.71%"],
+            [2, "Wonogiri Slogohimo", "109.77%", "472", "584", "329", "56.34%", "167", "156", "8.7", "255", "26.71%"],
+            [2, "Wonogiri Ngadirojo LM", "97.39%", "672", "689", "503", "73.00%", "175", "310", "12.9", "189", "44.99%"],
+            [2, "Boyolali LM", "104.97%", "803", "956", "772", "80.75%", "374", "389", "15.6", "184", "40.69%"],
+            [2, "Karanganyar Tasikmadu LM", "85.35%", "1,200", "1,361", "1,202", "88.32%", "496", "681", "20.6", "160", "50.04%"],
+            [2, "Boyolali Ngemplak LM", "64.08%", "430", "494", "367", "74.29%", "212", "150", "15.0", "127", "30.36%"],
+            [2, "Solo Laweyan LM", "116.70%", "566", "429", "370", "86.25%", "88", "276", "39.4", "59", "64.34%"],
+            [2, "Karanganyar Colomadu", "145.47%", "787", "837", "783", "93.55%", "542", "240", "21.8", "54", "28.67%"],
+            [2, "Karanganyar Gondangrejo", "819.44%", "295", "267", "234", "87.64%", "127", "106", "17.7", "33", "39.70%"],
+            [2, "Wonogiri Wuryantoro", "-", "111", "148", "120", "81.08%", "98", "22", "4.4", "28", "14.86%"],
+            [2, "Wonogiri Pracimantoro", "74.14%", "129", "254", "245", "96.46%", "218", "27", "4.5", "11", "10.63%"],
+
+            // --- DISTRICT 3 ---
+            [3, "Kendal Patebon LM", "126.38%", "1,691", "4,992", "2,098", "42.03%", "1,545", "534", "16.7", "2,894", "10.70%"],
+            [3, "Semarang Gayamsari LM", "98.68%", "2,166", "3,933", "2,471", "62.83%", "2,222", "234", "7.8", "1,462", "5.95%"],
+            [3, "Semarang Ngaliyan LM", "100.37%", "1,358", "2,563", "1,337", "52.17%", "1,270", "61", "3.6", "1,226", "2.38%"],
+            [3, "Salatiga Argomulyo LM", "161.01%", "1,747", "2,399", "1,460", "60.86%", "1,226", "218", "7.0", "948", "9.09%"],
+            [3, "Kendal Boja", "228.51%", "1,074", "1,460", "968", "65.90%", "892", "75", "7.5", "501", "5.11%"],
+            [3, "Semarang Tengah", "114.68%", "828", "1,492", "1,009", "67.63%", "638", "367", "30.6", "483", "24.60%"],
+            [3, "Semarang Ungaran Barat", "106.73%", "999", "1,121", "705", "62.89%", "BEE", "347", "13.3", "416", "30.95%"],
+            [3, "Semarang Banyumanik", "120.02%", "1,067", "1,260", "879", "69.76%", "663", "213", "19.4", "381", "16.90%"],
+            [3, "Semarang Petompon LM", "107.21%", "1,085", "1,249", "903", "72.30%", "668", "219", "15.6", "346", "17.53%"],
+            [3, "Pemalang Randudongkal", "83.21%", "1,016", "1,300", "1,096", "84.31%", "905", "187", "8.5", "204", "14.38%"],
+            [3, "Pemalang Petarukan 1 LM", "97.63%", "1,113", "1,347", "1,166", "86.56%", "673", "288", "13.1", "181", "21.38%"],
+            [3, "Pekalongan Kajen.", "101.83%", "666", "737", "592", "80.33%", "429", "162", "11.6", "145", "21.98%"],
+            [3, "Semarang Gunungpati", "100.00%", "599", "738", "606", "82.11%", "527", "77", "9.6", "132", "10.43%"],
+            [3, "Semarang Tengaran", "153.09%", "545", "588", "464", "78.91%", "368", "92", "9.2", "124", "15.65%"],
+            [3, "Pekalongan Wiradesa", "120.95%", "583", "705", "594", "84.26%", "440", "153", "17.0", "111", "21.70%"],
+            [3, "Pemalang Comal", "94.88%", "815", "1,002", "896", "89.42%", "703", "187", "12.5", "106", "18.66%"],
+            [3, "Pekalongan Barat LM", "105.23%", "1,067", "1,223", "1,134", "92.72%", "705", "390", "19.5", "89", "31.89%"],
+            [3, "Semarang Tugu", "91.09%", "276", "364", "278", "76.37%", "224", "53", "7.6", "86", "14.56%"],
+            [3, "Pekalongan Rejesan LM", "89.03%", "617", "727", "695", "95.60%", "473", "212", "15.1", "36", "29.16%"],
+            [3, "Semarang Ambarawa LM", "94.10%", "542", "648", "614", "54.75%", "298", "299", "15.7", "34", "46.14%"],
+            [3, "Semarang Tembalang LM", "101.31%", "1,004", "1,116", "903", "80.91%", "840", "63", "3.9", "213", "5.65%"],
+            [3, "Batang Kauman LM.", "113.88%", "566", "616", "592", "96.10%", "438", "152", "10.9", "24", "24.68%"],
+            [3, "Batang Limpung", "98.54%", "609", "666", "658", "98.80%", "540", "109", "6.4", "13", "16.37%"],
+            [3, "Batang Bandar", "108.83%", "419", "439", "434", "98.86%", "261", "160", "17.8", "5", "36.45%"],
+
+            // --- DISTRICT 4 ---
+            [4, "Sleman Gamping Trihariggo LM", "137.97%", "2,707", "5,188", "2,502", "48.23%", "1,808", "675", "20.5", "2,686", "13.01%"],
+            [4, "DIY Tegal Panggung LM", "118.96%", "1,374", "2,479", "909", "36.67%", "802", "103", "4.3", "1,570", "4.15%"],
+            [4, "Sleman Ngaglik LM", "128.37%", "2,498", "2,845", "1,545", "54.31%", "1,392", "149", "4.3", "1,300", "5.24%"],
+            [4, "Sleman Depok LM", "117.84%", "2,477", "3,154", "2,341", "74.22%", "2,222", "99", "4.0", "829", "3.14%"],
+            [4, "Bantul Banguntapan LM", "128.95%", "1,519", "2,161", "1,408", "65.16%", "1,363", "44", "2.6", "753", "2.04%"],
+            [4, "Sleman Kalasan", "146.07%", "780", "1,093", "462", "42.27%", "407", "53", "5.3", "631", "4.85%"],
+            [4, "Temanggung LM", "99.09%", "656", "1,195", "657", "54.98%", "351", "294", "17.3", "538", "24.60%"],
+            [4, "Progo Wates", "47.72%", "472", "1,814", "1,306", "72.00%", "955", "346", "15.0", "508", "19.07%"],
+            [4, "Gunung Kidul Wonosari LM", "123.20%", "1,232", "1,697", "1,230", "72.48%", "913", "301", "11.6", "473", "17.74%"],
+            [4, "Magelang Sumberejo LM", "127.58%", "1,915", "2,330", "1,867", "80.13%", "736", "1,085", "24.1", "464", "46.57%"],
+            [4, "Kebumen Gombong", "63.55%", "415", "1,207", "797", "66.03%", "604", "185", "9.3", "410", "15.33%"],
+            [4, "Bantul Tamantirto LM", "146.01%", "987", "1,154", "880", "76.26%", "762", "115", "8.8", "281", "9.97%"],
+            [4, "Bantul Trirenggo LM", "139.02%", "1,589", "1,798", "1,571", "87.37%", "1,294", "269", "14.9", "227", "14.96%"],
+            [4, "Magelang Secang LM", "-", "1,159", "1,331", "1,121", "84.22%", "463", "641", "24.7", "210", "48.16%"],
+            [4, "Temanggung Ngadirejo.", "97.48%", "465", "587", "428", "72.91%", "186", "229", "16.4", "159", "39.01%"],
+            [4, "Purworejo", "51.33%", "367", "844", "694", "82.23%", "279", "402", "20.1", "151", "47.63%"],
+            [4, "Kebumen Mirit", "204.94%", "332", "ESE", "283", "80.17%", "190", "92", "15.3", "75", "26.06%"],
+            [4, "Purworejo Bruno", "95.62%", "131", "179", "116", "64.80%", "55", "60", "15.0", "63", "33.52%"],
+            [4, "Purworejo Kutoarjo", "112.57%", "600", "632", "591", "93.51%", "170", "407", "25.4", "41", "64.40%"],
+            [4, "Magelang Kaliangkrik", "119.67%", "219", "242", "236", "97.52%", "155", "76", "12.7", "7", "31.41%"],
+
+            // --- DISTRICT 5 ---
+            [5, "Pati Randukuning LM", "193.12%", "2,553", "2,863", "2,173", "75.90%", "1,749", "407", "10.7", "692", "14.22%"],
+            [5, "Kudus Mejobo LM", "205.74%", "1,827", "2,076", "1,409", "67.87%", "1,121", "271", "11.3", "667", "13.05%"],
+            [5, "Jepara Bataalit LM", "206.93%", "2,808", "3,079", "2,434", "79.05%", "1,656", "755", "21.0", "645", "24.52%"],
+            [5, "Demak Karangtengah LM", "179.75%", "2,689", "2,906", "2,495", "85.86%", "1,393", "1,065", "25.4", "413", "36.65%"],
+            [5, "Blora LM", "193.36%", "1,572", "1,817", "1,423", "78.32%", "1,132", "285", "7.0", "396", "15.69%"],
+            [5, "Kudus Langgardalem", "251.06%", "713", "742", "556", "74.93%", "532", "24", "2.7", "186", "3.23%"],
+            [5, "Kudus Jekulo", "247.02%", "788", "841", "724", "86.09%", "628", "87", "8.7", "122", "10.34%"],
+            [5, "Blora Cepu", "197.89%", "562", "599", "491", "81.97%", "375", "113", "16.1", "108", "18.86%"],
+            [5, "Demak Mranggen", "195.82%", "1,124", "1,169", "1,108", "94.78%", "811", "281", "18.7", "61", "24.04%"],
+            [5, "Rembang", "174.48%", "916", "931", "885", "95.06%", "700", "182", "10.7", "46", "19.55%"],
+            [5, "Grobogan Purwodadi LM", "238.44%", "1,464", "1,473", "1,434", "97.35%", "1,003", "420", "13.1", "39", "28.51%"],
+            [5, "Grobogan Gubug", "271.48%", "828", "751", "732", "97.47%", "585", "146", "5.8", "19", "19.44%"]
+        ];
+
+        window.onload = function() {
+            const tbody = document.getElementById('table-body');
+            let currentDist = null;
+
+            dataRows.forEach(row => {
+                const distNum = row[0];
+                const hubName = row[1];
+                const fcastStr = row[2];
+
+                // Append Group Header if District changes
+                if(currentDist !== distNum) {
+                    const trGroup = document.createElement('tr');
+                    trGroup.className = "bg-slate-200 border-y-2 border-slate-300 group-header shadow-sm";
+                    trGroup.innerHTML = `<td colspan="12" class="px-4 py-2 text-left font-bold text-slate-800 uppercase tracking-wider text-sm shadow-[0_2px_4px_rgba(0,0,0,0.05)]">Central Java - DIY - ${distNum}</td>`;
+                    tbody.appendChild(trGroup);
+                    currentDist = distNum;
+                }
+
+                // Evaluate Forecast Status & Styling
+                let fcastClass = "text-slate-500 bg-slate-50";
+                let isCritical = false;
+                
+                if (fcastStr && fcastStr !== "-") {
+                    let val = parseFloat(fcastStr.replace(/,/g, '.').replace('%', ''));
+                    if (val < 100) {
+                        fcastClass = "text-blue-700 bg-blue-50 font-bold border-r border-slate-100";
+                    } else if (val <= 120) {
+                        fcastClass = "text-emerald-700 bg-emerald-50 font-bold border-r border-slate-100";
+                    } else if (val <= 150) {
+                        fcastClass = "text-orange-700 bg-orange-50 font-bold border-r border-slate-100";
+                    } else {
+                        fcastClass = "text-rose-700 bg-rose-100 font-bold border-r border-slate-100 border-y border-rose-300";
+                        isCritical = true; // Flag for > 150%
+                    }
+                }
+
+                // Create Data Row
+                const tr = document.createElement('tr');
+                tr.className = "transition-colors duration-150 hover:bg-blue-50/50";
+                
+                tr.innerHTML = `
+                    <td class="px-4 py-2 text-left border-r border-slate-100">Central Java - DIY - ${distNum}</td>
+                    <td class="px-4 py-2 text-left font-medium text-slate-800 border-r border-slate-100">
+                        <div class="flex items-center">
+                            ${hubName}
+                            ${isCritical ? '<span class="ml-2 flex h-2 w-2 relative" title="Critical Status"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span></span>' : ''}
+                        </div>
+                    </td>
+                    <td class="px-3 py-2 text-center ${fcastClass}">${fcastStr}</td>
+                    <td class="px-3 py-2">${row[3]}</td>
+                    <td class="px-3 py-2">${row[4]}</td>
+                    <td class="px-3 py-2">${row[5]}</td>
+                    <td class="px-3 py-2 text-slate-400">${row[6]}</td>
+                    <td class="px-3 py-2">${row[7]}</td>
+                    <td class="px-3 py-2">${row[8]}</td>
+                    <td class="px-3 py-2">${row[9]}</td>
+                    <td class="px-3 py-2 text-center font-semibold text-rose-700 bg-rose-50 border-l border-slate-100">${row[10]}</td>
+                    <td class="px-3 py-2 text-center font-medium bg-slate-50">${row[11]}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        };
+    </script>
+</body>
+</html>
