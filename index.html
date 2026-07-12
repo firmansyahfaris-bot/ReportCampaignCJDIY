@@ -12,7 +12,7 @@
         .table-container::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
         .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        th { position: sticky; top: 0; z-index: 10; }
+        th { position: sticky; top: 0; z-index: 20; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -243,7 +243,8 @@
                 if(currentDist !== row[0]) {
                     currentDist = row[0];
                     const trGroup = document.createElement('tr');
-                    trGroup.className = "bg-slate-200 border-y-2 border-slate-300 sticky top-[0px] z-10 shadow-sm";
+                    // Mengatur top offset agar nempel tepat di bawah header tabel (yang tingginya ~41px)
+                    trGroup.className = "bg-slate-200 border-y-2 border-slate-300 sticky top-[41px] z-10 shadow-sm";
                     trGroup.innerHTML = `<td colspan="13" class="px-4 py-2 text-left font-bold text-slate-800 uppercase tracking-wider text-sm">District ${currentDist}</td>`;
                     tbody.appendChild(trGroup);
                 }
